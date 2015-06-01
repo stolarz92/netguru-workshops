@@ -5,5 +5,11 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :users
+
+  devise_scope :user do
+    get "sign_in", to: "devise/sessions#new"
+  end
+
   root 'categories#index'
 end
