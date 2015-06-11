@@ -15,7 +15,8 @@
       %td= product.description
       %td= product.price
       %td= link_to 'Show', category_product_path(product.category, product)
-      %td= link_to 'Edit', edit_category_product_path(product.category, product)
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+      - if current_user == product.user
+        %td= link_to 'Edit', edit_category_product_path(product.category, product)
+        %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
