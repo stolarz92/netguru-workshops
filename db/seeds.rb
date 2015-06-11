@@ -46,7 +46,7 @@ def create_products
   users.each do |user|
     5.times do
       title = Faker::Product.product
-      description = Faker::Lorem.sentence
+      description = Faker::Lorem.paragraph
       price = [10,20,35,50,100].sample
 
       category.products.create(

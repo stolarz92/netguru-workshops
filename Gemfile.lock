@@ -212,6 +212,7 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.2.1)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -241,3 +242,4 @@ DEPENDENCIES
   therubyracer
   travis
   uglifier
+  will_paginate (~> 3.0.6)

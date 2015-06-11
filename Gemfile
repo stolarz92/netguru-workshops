@@ -19,6 +19,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem 'will_paginate', '~> 3.0.6'
+
 
 group :development do
   gem 'spring'

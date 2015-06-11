@@ -1,18 +1,30 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h3
+  Products in
   = category.name
 
-%p
+.row
   - category.products.each do |product|
-    = product.title
-
+    .col-lg-12.product
+      .col-lg-3.col-lg-offset-1
+        %h4.product_title
+          = product.title
+      .col-lg-5
+        %p.product_desc
+          = product.description
+      .col-lg-1
+        %p.product_price
+          = product.price
+      .col-lg-2
+        = link_to 'Show', category_product_path(category.id, product.id), :class => "btn btn-warning"
+    %hr.division_line
 %p
-  %h3 New product
-  = render 'products/form'
+  - if user_signed_in?
+    %h3 New product
+    = render 'products/form'
 
-- if current_user && current_user.admin?
-  = link_to 'Edit', edit_category_path(category)
+  - if current_user && current_user.admin?
+    = link_to 'Edit', edit_category_path(category)
 \|
 = link_to 'Back', categories_path, class: 'btn btn-primary'
