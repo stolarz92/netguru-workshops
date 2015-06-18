@@ -11,4 +11,8 @@ class Product < ActiveRecord::Base
   def average_rating
     self.reviews.average(:rating)
   end
+
+  def product_reviews_count
+    self.reviews.count
+  end
 end

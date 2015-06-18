@@ -30,7 +30,7 @@
                 = link_to "Login", new_user_session_path
 
 
-    .container-fluid
+    .container
       - flash.each do |message_type, message|
         = content_tag(:div, message, class: "alert alert-#{message_type}")
       .row
