@@ -1,4 +1,9 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.review
+  %p.pull-right= time_ago_in_words(review.created_at) + " ago"
+  %em
+    %strong=review.author
+  %p
+    %strong Rating:
+    = review.rating
+  %p= review.content
+%hr
