@@ -24,7 +24,8 @@ class ProductsController < ApplicationController
 
     if product.save
       category.products << product
-      redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
+      flash[:success] = 'Product was successfully added.'
+      redirect_to category_product_url(category, product)
     else
       render action: 'new'
     end
@@ -32,7 +33,8 @@ class ProductsController < ApplicationController
 
   def update
     if self.product.update(product_params)
-      redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
+      flash[:success] = 'Product was successfully updated.'
+      redirect_to category_product_url(category, product)
     else
       render action: 'edit'
     end
