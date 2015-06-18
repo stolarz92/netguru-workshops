@@ -22,7 +22,7 @@
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li
-                = link_to "Log out #{current_user.name}", destroy_user_session_path, {:method => delete}
+                = link_to "Log out #{current_user.firstname}", destroy_user_session_path, {:method => :delete}
             - else
               %li
                 = link_to "Sign up", new_user_registration_path
