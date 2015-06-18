@@ -1,24 +1,31 @@
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
-
-%p
-  %b Category
-  = product.category.name
-
-%h3 Reviews
-= render 'reviews/form'
-
-= render reviews
-
+= link_to 'Back to products list', category_products_path, :class => "btn btn-default"
 - if current_user == product.user
   = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
 
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+.row.product.thumbnail
+  .col-sm-12
+    .product-header
+      %p.product-price.pull-right.lead
+        %span.glyphicon.glyphicon-usd{aria: {hidden: true}}
+        = product.price
+      %h3.product-title
+        = product.title
+    %p
+      %strong Category:
+      = product.category.name
+    %p.product-desc
+      = product.description
+    .ratings
+      %p.product-reviews.pull-right
+        %strong Reviews:
+        = product.product_reviews_count
+      %p.product-rating
+        %strong Average rating:
+        = product.average_rating
+
+
+
+%h3 Reviews
+= render reviews
+= render 'reviews/form'
+
