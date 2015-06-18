@@ -1,21 +1,27 @@
 %h1 Listing categories
 
-%table.table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
+%table.table.table-bordered.table-striped
+  %thead
+    %tr.colored-row
+      %th.col-sm-1.col-md-1 Id
+      %th.col-sm-2.col-md-2 Category name
+      %th.col-sm-3.coml-md-3 Action
       - if current_user && current_user.admin?
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-        %td= link_to 'Show products', category_products_path(category)
+        %th.col-sm-3.col-md-3 Admin zone
+  %tbody
+    - categories.each do |category|
+      %tr
+        %td= category.id
+        %td= category.name
+        %td
+          .table-buttons.centered
+            = link_to 'Show category', category, class: 'btn btn-primary btn btn-sm'
+            = link_to 'Show products', category_products_path(category), class: 'btn btn-primary'
+        - if current_user && current_user.admin?
+          %td
+            = link_to 'Edit category', edit_category_path(category), class: 'btn btn-warning btn-sm'
+            = link_to 'Destroy category', category, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' }
 
 %br
 - if current_user && current_user.admin?
-  = link_to 'New Category', new_category_path
+  = link_to 'New Category', new_category_path, class: 'btn btn-success'
