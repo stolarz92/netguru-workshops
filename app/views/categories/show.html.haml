@@ -1,24 +1,6 @@
-%p#notice= notice
-
-%h3
-  Products in
+%h2
+  Category:
   = category.name
-
-.row
-  - category.products.each do |product|
-    .col-lg-12.product
-      .col-lg-3.col-lg-offset-1
-        %h4.product_title
-          = product.title
-      .col-lg-5
-        %p.product_desc
-          = product.description
-      .col-lg-1
-        %p.product_price
-          = product.price
-      .col-lg-2
-        = link_to 'Show', category_product_path(category.id, product.id), :class => "btn btn-warning"
-    %hr.division_line
 %p
   - if user_signed_in?
     %h3 New product

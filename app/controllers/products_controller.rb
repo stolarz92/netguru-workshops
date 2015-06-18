@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :signed_in, only: [:create, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   expose(:category)
   expose(:products)
   expose(:product)
@@ -50,10 +50,8 @@ class ProductsController < ApplicationController
   end
 
   def correct_user
-    owner = product.user
-    if owner != current_user
-      flash[:error] = 'You are not allowed to edit this product.'
-      redirect_to category_product_path(category, product)
+    unless product.user == current_user
+      redirect_to(category_product_url(category, product), flash: {error: 'You are not allowed to edit this product.'})
     end
   end
 

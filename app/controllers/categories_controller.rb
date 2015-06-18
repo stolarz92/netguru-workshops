@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :authenticate_admin, only: [:new, :edit, :create, :update, :destroy]
-  
+
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
     self.category = Category.new(category_params)
 
     if category.save
-      redirect_to category, notice: 'Category was successfully created.'
+      flash[:success] = 'Category was successfully created.'
+      redirect_to category
     else
       render action: 'new'
     end
@@ -30,23 +31,31 @@ class CategoriesController < ApplicationController
 
   def update
     if category.update(category_params)
-      redirect_to category, notice: 'Category was successfully updated.'
+      flash[:success] = 'Category was successfully created.'
+      redirect_to category
     else
       render action: 'edit'
     end
   end
 
   def destroy
-    category.destroy
-    redirect_to categories_url, notice: 'Category was successfully destroyed.'
+    if category.destroy
+      flash[:success] = 'Category was successfully destroyed.'
+      redirect_to categories_url
+    else
+      render 'index'
+    end
   end
 
   private
   def authenticate_admin
-    redirect_to new_user_session_path unless current_user.admin?
+    unless current_user.admin?
+      redirect_to new_user_session_path
+    end
   end
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

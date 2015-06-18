@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_presence_of :firstname
   validates_presence_of :lastname
 
-  def admin?
+  def admin
+    current_user.admin?
   end
 end
