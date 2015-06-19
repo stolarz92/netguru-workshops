@@ -1,6 +1,4 @@
 = link_to 'Back to products list', category_products_path, :class => "btn btn-primary"
-- if current_user == product.user
-  = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
 
 .row.product.thumbnail
   .col-sm-12
@@ -10,6 +8,14 @@
         = product.price
       %h3.product-title
         = product.title
+        - if current_user == product.user
+          = link_to 'Edit', edit_category_product_path(category.id, product.id),
+            class: 'btn btn-warning'
+          = link_to 'Destroy',
+          category_product_path(product.category, product),
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: 'btn btn-danger'
     %p
       %strong Category:
       = product.category.name
