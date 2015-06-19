@@ -1,0 +1,15 @@
+.panel.panel-primary
+  .panel-heading
+    .panel-title
+      Your last reviews
+  .panel-body
+    %ul.list-group
+    - current_user.reviews.last(5).reverse.each do |review|
+      %li.list-group-item
+        %p
+          = link_to review.product.title, category_product_path(review.product.category, review.product)
+        %p
+          = review.content
+        %p
+          = review.created_at.strftime('%H:%m %d-%m-%Y')
+    %hr

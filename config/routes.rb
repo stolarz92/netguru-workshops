@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "sign_in", to: "devise/sessions#new"
+    get "profile", to: "users#show"
   end
 
   root 'categories#index'

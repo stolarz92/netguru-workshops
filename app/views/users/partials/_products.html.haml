@@ -1,0 +1,32 @@
+.panel.panel-primary
+  .panel-heading
+    .panel-title
+      Your products
+  .panel-body
+    %ul.list-group
+    - current_user.products.each do |product|
+      %li.list-group-item
+        .buttons.pull-right
+          = link_to 'Edit', edit_category_product_path(product.category_id, product), class: 'btn btn-warning btn-xs'
+          = link_to 'Destroy',
+            category_product_path(product.category_id, product),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-danger btn-xs'
+        %p
+          %strong
+          = link_to product.title, category_product_path(product.category, product)
+        %p
+          Category:
+          = product.category.name
+        %p
+          Description:
+          = product.description
+        %p
+          Created at:
+          = product.created_at.strftime('%H:%m %d-%m-%Y')
+        %p
+        %p
+          Reviews:
+          = product.reviews.count
+      %hr
