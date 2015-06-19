@@ -11,6 +11,14 @@
         = product.price
       %h3.product-title
         = link_to product.title, category_product_path(category.id, product.id)
+      - if current_user == product.user
+        .buttons
+          = link_to 'Edit', edit_category_product_path(product.category_id, product), class: 'btn btn-warning btn-xs'
+          = link_to 'Destroy',
+              category_product_path(product.category_id, product),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: 'btn btn-danger btn-xs'
       %p.product-desc.lead
         = product.description
       %p.product-rating
@@ -21,15 +29,6 @@
         .buttons.pull-right
           = link_to 'Show', category_product_path(category.id, product.id),
             :class => "btn btn-primary btn-lg pull-right"
-          - if current_user == product.user
-            = link_to 'Edit',
-              edit_category_product_path(product.category, product), class: 'btn btn-warning'
-            = link_to 'Destroy',
-              category_product_path(product.category, product),
-              method: :delete,
-              data: { confirm: 'Are you sure?' },
-              class: 'btn btn-danger'
-
         %p.product-reviews
           Reviews:
           %span.glyphicon.glyphicon-pencil
