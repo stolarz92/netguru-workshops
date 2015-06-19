@@ -1,4 +1,4 @@
-= link_to 'Back to products list', category_products_path, :class => "btn btn-default"
+= link_to 'Back to products list', category_products_path, :class => "btn btn-primary"
 - if current_user == product.user
   = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
 
