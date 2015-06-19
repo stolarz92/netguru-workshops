@@ -15,8 +15,9 @@
         %td= category.name
         %td
           .table-buttons.centered
-            = link_to 'Add product', category, class: 'btn btn-success'
             = link_to 'Show products', category_products_path(category), class: 'btn btn-primary'
+            - if user_signed_in?
+              = link_to 'Add product', category, class: 'btn btn-success'
         - if current_user && current_user.admin?
           %td
             = link_to 'Edit category', edit_category_path(category), class: 'btn btn-warning btn-sm'
