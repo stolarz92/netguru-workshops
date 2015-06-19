@@ -22,14 +22,18 @@
             = product.category.name
           %p
             Description:
-            = product.description
+            = truncate(product.description, :length => 50)
           %p
             Created at:
             = product.created_at.strftime('%H:%m %d-%m-%Y')
           %p
-          %p
             Reviews:
+            %span.glyphicon.glyphicon-pencil
             = product.reviews.count
+          %p
+            Average Rating:
+            %span.glyphicon.glyphicon-star
+            = product.average_rating
         %hr
     - else
       %p You have no products yet. Go to #{ link_to 'categories', categories_path} and add something!
