@@ -4,6 +4,9 @@
   %h2
     Category:
     = category.name
+  %p
+    There are #{pluralize(category.products.count, 'product')} in this category.
+    #{link_to 'See them now!', category_products_path(category)}
 
 %p
   - if user_signed_in?

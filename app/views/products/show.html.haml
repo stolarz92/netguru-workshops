@@ -1,4 +1,4 @@
-= link_to 'Back to products list', category_products_path, :class => "btn btn-primary"
+= link_to 'Back', :back, :class => "btn btn-primary"
 
 .row.product.thumbnail
   .col-sm-12
@@ -10,23 +10,28 @@
         = product.title
         - if current_user == product.user
           = link_to 'Edit', edit_category_product_path(category.id, product.id),
-            class: 'btn btn-warning'
+            class: 'btn btn-warning btn-xs'
           = link_to 'Destroy',
           category_product_path(product.category, product),
           method: :delete,
           data: { confirm: 'Are you sure?' },
-          class: 'btn btn-danger'
+          class: 'btn btn-danger btn-xs'
     %p
       %strong Category:
       = product.category.name
     %p.product-desc
       = product.description
+    %p
+      %strong Author:
+      = product.user.firstname + ' ' + product.user.lastname
     .ratings
       %p.product-reviews.pull-right
         %strong Reviews:
+        %span.glyphicon.glyphicon-pencil
         = product.product_reviews_count
       %p.product-rating
         %strong Average rating:
+        %span.glyphicon.glyphicon-star
         = product.average_rating
 
 
@@ -34,6 +39,7 @@
 %h3 Reviews
 .well.reviews
   = render reviews
-  %h4 Your review
-  = render 'reviews/form'
+  - if user_signed_in?
+    %h4 Your review
+    = render 'reviews/form'
 

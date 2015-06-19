@@ -1,13 +1,15 @@
 .row
   .col-sm-12
-    %h1 User's profile
+    .header
+      = link_to 'Edit', edit_user_registration_path, class: 'btn btn-warning pull-right'
+      %h1 User's profile
 .row
-  .col-sm-3
+  .col-md-3
     = render 'users/partials/info'
     = render 'users/partials/activity'
-  .col-sm-6
+  .col-md-6
     = render 'users/partials/products'
-  .col-sm-3
+  .col-md-3
     = render 'users/partials/reviews'
 
 

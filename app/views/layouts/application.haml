@@ -20,6 +20,8 @@
           = link_to AppConfig.workshops_name, root_path, :class => "navbar-brand"
         #navbarasd.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to 'Categories', categories_path
             - if user_signed_in?
               %li
                 = link_to "Your profile", profile_path

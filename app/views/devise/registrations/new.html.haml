@@ -4,30 +4,16 @@
     .panel-heading
       .panel-title Sign up form
     .panel-body
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f|
-        = f.error_notification
-        .form-group
-          = f.label :firstname, :class => 'col-md-3 control-label'
-          .col-md-9
-            = f.input_field :firstname, required: true, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :lastname, :class => 'col-md-3 control-label'
-          .col-md-9
-            = f.input_field :lastname, required: true, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :email, :class => 'col-md-3 control-label'
-          .col-md-9
-            = f.input_field :email, required: true, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :password, :class => 'col-md-3 control-label'
-          .col-md-9
-            = f.input_field :password, required: true, class: 'form-control'
-        .form-group
-          = f.label :password_confirmation, :class => 'col-md-3 control-label'
-          .col-md-9
-            = f.input_field :password_confirmation, required: true, class: 'form-control'
-        .form-group
-          .col-md-offset-3.col-md-9
+      .row
+        .col-xs-10.col-xs-offset-1
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f|
+            = f.error_notification
+            = f.input :firstname, required: true, autofocus: true, class: 'form-control'
+            = f.input :lastname, required: true, autofocus: true, class: 'form-control'
+            = f.input :email, placeholder: 'user@domain.com', required: true,
+            autofocus: true, class: 'form-control'
+            = f.input :password, required: true, hint: 'Minimum 8 characters', class: 'form-control'
+            = f.input :password_confirmation, required: true, class: 'form-control'
             = f.button :submit, "Sign up", class: 'btn btn-info'
             = render "devise/shared/links"
 

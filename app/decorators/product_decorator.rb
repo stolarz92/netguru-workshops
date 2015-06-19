@@ -10,4 +10,7 @@ class ProductDecorator < Draper::Decorator
   #     end
   #   end
 
+  def author
+    "#{user.firstname} #{user.lastname}"
+  end
 end

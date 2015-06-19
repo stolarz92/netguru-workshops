@@ -1,7 +1,7 @@
 = link_to 'Back', categories_path, class: 'btn btn-primary'
 
 .product-form
-  %h1 Editing category
+  %h1 Editing category #{category.name}
   = render 'form'
 
 -#= link_to 'Show', category, class: 'btn btn-primary'

@@ -11,6 +11,5 @@ class User < ActiveRecord::Base
   validates_presence_of :lastname
 
   def admin
-    current_user.admin?
   end
 end

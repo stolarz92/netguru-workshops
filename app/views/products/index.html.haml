@@ -15,18 +15,27 @@
         = product.description
       %p.product-rating
         Average rating:
+        %span.glyphicon.glyphicon-star
         = product.average_rating
-      %p.product-reviews
-        Reviews:
-        = product.product_reviews_count
-      .buttons
-        = link_to 'Show', category_product_path(category.id, product.id),
-          :class => "btn btn-primary btn-lg pull-right"
-        - if current_user == product.user
-          = link_to 'Edit',
-            edit_category_product_path(product.category, product), class: 'btn btn-warning'
-          = link_to 'Destroy',
-            category_product_path(product.category, product),
-            method: :delete,
-            data: { confirm: 'Are you sure?' },
-            class: 'btn btn-danger'
+      .asd
+        .buttons.pull-right
+          = link_to 'Show', category_product_path(category.id, product.id),
+            :class => "btn btn-primary btn-lg pull-right"
+          - if current_user == product.user
+            = link_to 'Edit',
+              edit_category_product_path(product.category, product), class: 'btn btn-warning'
+            = link_to 'Destroy',
+              category_product_path(product.category, product),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: 'btn btn-danger'
+
+        %p.product-reviews
+          Reviews:
+          %span.glyphicon.glyphicon-pencil
+          = product.product_reviews_count
+        %p.product-author
+          Author:
+          %span.glyphicon.glyphicon-user
+          = product.user.firstname + ' ' + product.user.lastname
+

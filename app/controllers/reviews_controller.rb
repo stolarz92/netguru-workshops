@@ -15,7 +15,8 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product)
     else
-      render action: 'new'
+      flash[:warning] = 'Your comment was not added.'
+      redirect_to category_product_url(product.category, product)
     end
   end
 
