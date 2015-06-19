@@ -16,9 +16,18 @@ def create_admin
       admin: true
   )
 end
+def create_test_user
+  User.create!(
+      email: 'test@test.com',
+      firstname: 'Test',
+      lastname: 'Testing',
+      password: 'password',
+      password_confirmation: 'password',
+  )
+end
 
 def create_users
-  5.times do
+  4.times do
     email = Faker::Internet.email
     firstname = Faker::Name.first_name
     lastname = Faker::Name.last_name
@@ -79,6 +88,7 @@ def create_reviews
 end
 
 create_admin
+create_test_user
 create_users
 create_category
 create_products
